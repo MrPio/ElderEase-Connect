@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 enum Gender {
-  MALE('Ragazzo', Icons.male),
-  FEMALE('Ragazza', Icons.female),
+  MALE('Uomo', Icons.male),
+  FEMALE('Donna', Icons.female),
   OTHER('Altro', Icons.question_mark);
 
   final String title;

@@ -7,11 +7,12 @@ part 'post.g.dart';
 @JsonSerializable()
 class Post implements JSONSerializable {
   final String? authorUID;
-  int timestamp;
-  String description;
-  String? acceptedUserUID;
-  String elderName;
-  String elderSurname;
+  final int timestamp;
+  final String description;
+  final String? acceptedUserUID;
+  final String elderName;
+  final String elderSurname;
+  final int? review;
 
   @JsonKey(includeFromJson: true, includeToJson: false)
   String? uid;
@@ -29,6 +30,7 @@ class Post implements JSONSerializable {
     String? elderName,
     String? elderSurname,
     List<User?>? lastFollowers,
+    this.review
   })  : elderName = elderName ?? "",
         elderSurname = elderSurname ?? "";
 

@@ -14,6 +14,7 @@ Post _$PostFromJson(Map<String, dynamic> json) => Post(
       acceptedUserUID: json['acceptedUserUID'] as String?,
       elderName: json['elderName'] as String?,
       elderSurname: json['elderSurname'] as String?,
+      review: json['review'] as int?,
     );
 
 Map<String, dynamic> _$PostToJson(Post instance) => <String, dynamic>{
@@ -23,4 +24,5 @@ Map<String, dynamic> _$PostToJson(Post instance) => <String, dynamic>{
       'acceptedUserUID': instance.acceptedUserUID,
       'elderName': instance.elderName,
       'elderSurname': instance.elderSurname,
+      'review': instance.review,
     };

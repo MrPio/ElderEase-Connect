@@ -46,4 +46,13 @@ extension ContextExtensions on BuildContext {
       },
     );
   }
+
+  Future<DateTime?> askDate(BuildContext context, {DateTime? init}) async {
+    return await showDatePicker(
+      context: context,
+      initialDate: init??DateTime.now(),
+      firstDate: DateTime(1920),
+      lastDate: DateTime.now(),
+    );
+  }
 }

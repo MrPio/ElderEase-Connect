@@ -59,7 +59,7 @@ class DataManager {
     return user;
   }
 
-  /// Load the first 30 posts of a given User
+  /// Load the first 30 posts of a given User TODO
   loadUserPosts(User user) async {
     user.posts.clear();
     for (String postUID in user.postsUIDs.reversed.take(30)) {
