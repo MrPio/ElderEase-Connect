@@ -1,16 +1,15 @@
-# elder_care
+# ElderEase Connect
 
 ElderlyEase is an easy-to-use app that has been designed to connect the elderly with carers workers.
 
-## Getting Started
+## Demo
 
-This project is a starting point for a Flutter application.
+https://github.com/MrPio/ElderCare/assets/22773005/71ec9050-ad17-4c5e-a2c5-c3d043be10b6
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<div>
+  <img src="https://github.com/MrPio/ElderCare/assets/22773005/33e82daa-de02-49d8-8abb-c88bfb9c5e51" width="280rem"></img>
+  <img src="https://github.com/MrPio/ElderCare/assets/22773005/c7772186-ae9a-493c-8d59-ca5dd1580f70" width="280rem"></img>
+  <img src="https://github.com/MrPio/ElderCare/assets/22773005/935b59f8-0ec8-485a-8c33-47f176c857d3" width="280rem"></img>
+  <img src="https://github.com/MrPio/ElderCare/assets/22773005/76e85f99-4168-4d2f-8a45-ab8ed92ddd3b" width="280rem"></img>
+  <img src="https://github.com/MrPio/ElderCare/assets/22773005/0c6a5597-1afd-4d96-b895-b20728986da8" width="280rem"></img>
+</div>
