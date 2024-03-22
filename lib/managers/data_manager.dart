@@ -18,6 +18,7 @@ class DataManager {
   static const pageSize = 100;
 
   final anonymous = User();
+  List<User> cachedUsers = [];
 
   // Request a new page for paginated data
   loadMore() async {
@@ -43,9 +44,9 @@ class DataManager {
       }
 
       // Already cached?
-      // User? cachedUser =
-      //     cachedUsers.firstWhereOrNull((user) => user.uid == uid);
-      // if (cachedUser != null) return cachedUser;
+      User? cachedUser =
+          cachedUsers.firstWhereOrNull((user) => user.uid == uid);
+      if (cachedUser != null) return cachedUser;
 
       // Is current User?
       if (AccountManager().user.uid == uid) return AccountManager().user;
@@ -55,11 +56,11 @@ class DataManager {
     User? user = User.fromJson(await DatabaseManager().get("users/$uid"));
     user.uid = uid;
     loadUserPosts(user);
-    // cachedUsers.add(user);
+    cachedUsers.add(user);
     return user;
   }
 
-  /// Load the first 30 posts of a given User TODO
+  /// Load the first 30 posts of a given User
   loadUserPosts(User user) async {
     user.posts.clear();
     for (String postUID in user.postsUIDs.reversed.take(30)) {

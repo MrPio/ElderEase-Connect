@@ -18,7 +18,7 @@ class DatabaseManager {
 
   /// Get a list of object and paginate it
   Future<List<Map<String, dynamic>>?> getList(String path,
-      {pageSize = 10}) async {
+      {pageSize = 30}) async {
     final lastKey = paginateKeys[path];
     if (paginateKeys.containsKey(path) && lastKey == null) return null;
 

@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
+  import 'package:flutter/material.dart';
 
-enum UserType {
-  STUDENT("Offrire assistenza"),
-  ELDER("Chiedere assistenza");
+  enum UserType {
+    STUDENT("Offrire assistenza"),
+    ELDER("Chiedere assistenza");
 
-  final String title;
+    final String title;
 
-  const UserType(this.title);
-}
+    const UserType(this.title);
+  }

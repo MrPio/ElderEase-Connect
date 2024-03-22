@@ -1,7 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:elder_care/managers/account_manager.dart';
+import 'package:elder_care/managers/data_manager.dart';
+import 'package:elder_care/view/fragments/add_post.dart';
+import 'package:flutter/material.dart';
 
-import '../../enums/palette.dart';
+import '../../enums/user_type.dart';
+import 'fragments/bottombar/list_posts.dart';
+import 'fragments/bottombar/profile_fragment.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -12,79 +16,75 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
-  double _offsetY = 0;
 
-  changeIndex(int index) {
-    changeBottomBarOffsetY(0);
-    setState(() => _currentIndex = index);
+  List<Widget> _screens = [Container(), Container(), Container()];
+
+  UserType get userType => AccountManager().user.userType;
+
+  @override
+  void initState() {
+    super.initState();
+    _screens_elder = [
+      const ListPost(),
+      AddPost(refresh),
+      ProfileFragment(),
+    ];
+    refresh();
   }
 
-  changeBottomBarOffsetY(double offsetY) => setState(() => _offsetY = offsetY);
+  void refresh() {
+    Future.delayed(Duration.zero, () async {
+      DataManager().reloadPaginatedData();
+      await DataManager().loadMore();
+      for (var post
+          in DataManager().posts.where((post) => post.author == null)) {
+        post.author = await DataManager().loadUser(post.authorUID);
+      }
+      _screens = [Container(), Container(), Container()];
+      _screens = userType == UserType.ELDER ? _screens_elder : _screens_student;
+      _currentIndex = 0;
+      setState(() {});
+    });
+  }
+
+  late final List<Widget> _screens_elder;
+
+  final List<Widget> _screens_student = [
+    const ListPost(),
+    const ListPost(),
+    ProfileFragment(),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> pages = [
-      // HomeFragment(changeIndex),
-      // AddPostFragment(changeIndex,changeBottomBarOffsetY),
-      // AccountFragment(changeIndex,changeBottomBarOffsetY, user: AccountManager().user,),
-      // SettingsFragment(changeIndex),
-    ];
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            // Current fragment
-            pages[_currentIndex],
-
-            // Navigation bar
-            Transform.translate(
-              offset: Offset(0, _offsetY),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Palette.red,
-                    borderRadius: BorderRadius.circular(999),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.4),
-                        offset: const Offset(0, 6),
-                        blurRadius: 16,
-                        spreadRadius: 2,
-                      ),
-                    ],
-                  ),
-                  margin: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 11.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-/*                        BottomBarIcon(
-                          icon: Icons.home_outlined,
-                          active: _currentIndex == 0,
-                          onTap: () => changeIndex(0),
-                        ),
-                        BottomBarIcon(
-                          icon: Icons.add_circle_outline,
-                          active: _currentIndex == 1,
-                          onTap: () => changeIndex(1),
-                        ),
-                        BottomBarIcon(
-                          icon: Icons.person_outline,
-                          active: _currentIndex == 2,
-                          onTap: () => changeIndex(2),
-                        ),*/
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+      body: _screens[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        // backgroundColor: Palette.scheme.primary,
+        currentIndex: _currentIndex,
+        onTap: (int index) {
+          setState(() {
+            // if (userType == UserType.ELDER && index == 1) {
+            //   Navigator.of(context).pushNamed('/add_post');
+            // } else {
+            _currentIndex = index;
+            // }
+          });
+        },
+        items: [
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: 'Storico',
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.add),
+            label: userType == UserType.ELDER ? 'Aggiungi' : 'Lavora',
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profilo',
+          ),
+        ],
       ),
     );
   }

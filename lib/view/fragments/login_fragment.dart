@@ -29,6 +29,7 @@ class _LoginFragmentState extends State<LoginFragment> {
       await AccountManager().login(email, password);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
+          backgroundColor: Palette.scheme.primary,
           content: Text(
               "Login effettuato con successo! Bentornato ${AccountManager().user.name}!"),
         ),
