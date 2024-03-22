@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:elder_care/enums/post_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:elder_care/interfaces/json_serializable.dart';
@@ -25,26 +27,26 @@ class Post implements JSONSerializable {
   @JsonKey(includeFromJson: false, includeToJson: false)
   User? author;
 
-  Post({
-    this.authorUID,
-    this.timestamp = 0,
-    this.description = "",
-    this.address,
-    this.uid,
-    this.author,
-    this.acceptedUserUID,
-    this.hours =1,
-    int? regDateTimestamp,
-    String? elderName,
-    String? elderSurname,
-    List<User?>? lastFollowers,
-    PostType? postType,
-    this.review
-  })  : elderName = elderName ?? "",
+  Post(
+      {this.authorUID,
+      this.timestamp = 0,
+      this.description = "",
+      this.address,
+      this.uid,
+      this.author,
+      this.acceptedUserUID,
+      this.hours = 1,
+      int? regDateTimestamp,
+      String? elderName,
+      String? elderSurname,
+      List<User?>? lastFollowers,
+      PostType? postType,
+      this.review})
+      : elderName = elderName ?? "",
         regDateTimestamp =
             regDateTimestamp ?? DateTime.now().millisecondsSinceEpoch,
         elderSurname = elderSurname ?? "",
-        postType=PostType.HOME;
+        postType = postType??PostType.HOME;
 
   DateTime get date => DateTime.fromMillisecondsSinceEpoch(timestamp);
 
@@ -55,14 +57,15 @@ class Post implements JSONSerializable {
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
 
   String getStatus() {
-    if(DateTime.now().isBefore(date.add(Duration(minutes: (hours*60).toInt())))){
-      return acceptedUserUID ==null?'Scaduto':'In corso';
-    }
-    else{
+    if (isValid) {
+      return acceptedUserUID == null ? 'Scaduto' : 'In corso';
+    } else {
       return 'Terminato';
     }
-
   }
+
+  bool get hasBeenAccepted => acceptedUserUID != null;
+  bool get isValid => DateTime.now().isBefore(date);
 
   @override
   Map<String, dynamic> toJSON() => _$PostToJson(this);

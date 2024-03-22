@@ -5,6 +5,7 @@ extension DateTimeExtensions on DateTime {
       DateFormat(day ? 'dd MMM yyyy' : 'MMM yyyy').format(this);
 
   String toShortDateStr() => DateFormat('dd MMM').format(this);
+  String toShortDateHourStr() => DateFormat('dd MMM HH:mm').format(this);
 
   String toTimeStr() => DateFormat('HH:mm').format(this);
 

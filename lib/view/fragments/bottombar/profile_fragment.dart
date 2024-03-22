@@ -1,3 +1,4 @@
+import 'package:elder_care/enums/fonts.dart';
 import 'package:elder_care/enums/palette.dart';
 import 'package:elder_care/managers/account_manager.dart';
 import 'package:elder_care/managers/io_manager.dart';
@@ -14,8 +15,8 @@ class ProfileFragment extends StatelessWidget {
     return ListView(
       children: <Widget>[
         UserAccountsDrawerHeader(
-          accountName: Text("${AccountManager().user.name} ${AccountManager().user.surname}" ?? 'Nome utente'),
-          accountEmail: Text(user?.email ?? 'Email utente'),
+          accountName: Text("${AccountManager().user.name} ${AccountManager().user.surname} (${AccountManager().user.userType.typeName})", style: Fonts.bold(),),
+          accountEmail: Text(user?.email ?? 'Email utente',style: Fonts.regular()),
           currentAccountPicture: const CircleAvatar(
             backgroundImage: NetworkImage('https://firebasestorage.googleapis.com/v0/b/spotted-f3589.appspot.com/o/src%2Fanonymous.png?alt=media&token=82e2acd1-a7fa-49f3-a659-4692b5b98293'),
           ),

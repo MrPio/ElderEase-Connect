@@ -24,11 +24,7 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    _screens_elder = [
-      const ListPost(),
-      AddPost(refresh),
-      ProfileFragment(),
-    ];
+    _screens = [Container(), Container(), Container()];
     refresh();
   }
 
@@ -41,19 +37,37 @@ class _MainPageState extends State<MainPage> {
         post.author = await DataManager().loadUser(post.authorUID);
       }
       _screens = [Container(), Container(), Container()];
+      _screens_elder = [
+        ListPost(DataManager()
+            .posts
+            .where((post) => post.authorUID == AccountManager().user.uid)
+            .toList(), "Le tue richieste:",refresh),
+        AddPost(refresh),
+        ProfileFragment(),
+      ];
+      _screens_student = [
+        ListPost(DataManager()
+            .posts
+            .where((post) =>
+                post.hasBeenAccepted &&
+                post.isValid &&
+                post.acceptedUserUID == AccountManager().user.uid)
+            .toList(), "Lavori passati:",refresh),
+        ListPost(DataManager()
+            .posts
+            .where((post) => !post.hasBeenAccepted && post.isValid)
+            .toList(),"Richieste disponibili:",refresh),
+        ProfileFragment(),
+      ];
       _screens = userType == UserType.ELDER ? _screens_elder : _screens_student;
       _currentIndex = 0;
       setState(() {});
     });
   }
 
-  late final List<Widget> _screens_elder;
+  late List<Widget> _screens_elder;
 
-  final List<Widget> _screens_student = [
-    const ListPost(),
-    const ListPost(),
-    ProfileFragment(),
-  ];
+  late List<Widget> _screens_student;
 
   @override
   Widget build(BuildContext context) {

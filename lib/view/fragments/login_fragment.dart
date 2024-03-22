@@ -78,7 +78,7 @@ class _LoginFragmentState extends State<LoginFragment> {
                     child: Text(
                       "Ciao, bentornato!",
                       style: Fonts.black(
-                          size: 30, color: Palette.scheme.secondary),
+                          size: 30, color: Palette.scheme.onPrimaryContainer),
                     ),
                   ),
                 ),
@@ -89,7 +89,7 @@ class _LoginFragmentState extends State<LoginFragment> {
                     padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 10.0),
                     child: Text(
                       "Email",
-                      style: Fonts.bold(color: Palette.scheme.secondary),
+                      style: Fonts.bold(color: Palette.scheme.onPrimaryContainer),
                     ),
                   ),
                 ),
@@ -120,7 +120,7 @@ class _LoginFragmentState extends State<LoginFragment> {
                     padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 10.0),
                     child: Text(
                       "Password",
-                      style: Fonts.bold(color: Palette.scheme.secondary),
+                      style: Fonts.bold(color: Palette.scheme.onPrimaryContainer),
                     ),
                   ),
                 ),

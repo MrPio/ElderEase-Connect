@@ -134,7 +134,7 @@ class _SignupFragmentState extends State<SignupFragment> {
                 padding: const EdgeInsets.all(20.0),
                 child: Text(
                   "Benvenuto!\nDicci di più di te",
-                  style: Fonts.black(size: 30, color: Palette.scheme.secondary),
+                  style: Fonts.black(size: 30, color: Palette.scheme.onPrimaryContainer),
                 ),
               ),
             ),
@@ -146,7 +146,7 @@ class _SignupFragmentState extends State<SignupFragment> {
                 padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 10.0),
                 child: Text(
                   "Cosa vorresti fare?",
-                  style: Fonts.bold(color: Palette.scheme.secondary),
+                  style: Fonts.bold(color: Palette.scheme.onPrimaryContainer),
                 ),
               ),
             ),
@@ -200,7 +200,7 @@ class _SignupFragmentState extends State<SignupFragment> {
                 padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 10.0),
                 child: Text(
                   "Email",
-                  style: Fonts.bold(color: Palette.scheme.secondary),
+                  style: Fonts.bold(color: Palette.scheme.onPrimaryContainer),
                 ),
               ),
             ),
@@ -232,7 +232,7 @@ class _SignupFragmentState extends State<SignupFragment> {
                 padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 10.0),
                 child: Text(
                   "Password",
-                  style: Fonts.bold(color: Palette.scheme.secondary),
+                  style: Fonts.bold(color: Palette.scheme.onPrimaryContainer),
                 ),
               ),
             ),
@@ -265,7 +265,7 @@ class _SignupFragmentState extends State<SignupFragment> {
                 padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 10.0),
                 child: Text(
                   "Nome",
-                  style: Fonts.bold(color: Palette.scheme.secondary),
+                  style: Fonts.bold(color: Palette.scheme.onPrimaryContainer),
                 ),
               ),
             ),
@@ -297,7 +297,7 @@ class _SignupFragmentState extends State<SignupFragment> {
                 padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 10.0),
                 child: Text(
                   "Cognome",
-                  style: Fonts.bold(color: Palette.scheme.secondary),
+                  style: Fonts.bold(color: Palette.scheme.onPrimaryContainer),
                 ),
               ),
             ),
@@ -329,7 +329,7 @@ class _SignupFragmentState extends State<SignupFragment> {
                 padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 10.0),
                 child: Text(
                   "Data di nascita",
-                  style: Fonts.bold(color: Palette.scheme.secondary),
+                  style: Fonts.bold(color: Palette.scheme.onPrimaryContainer),
                 ),
               ),
             ),
@@ -368,7 +368,7 @@ class _SignupFragmentState extends State<SignupFragment> {
                 padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 10.0),
                 child: Text(
                   "Genere",
-                  style: Fonts.bold(color: Palette.scheme.secondary),
+                  style: Fonts.bold(color: Palette.scheme.onPrimaryContainer),
                 ),
               ),
             ),
@@ -424,7 +424,7 @@ class _SignupFragmentState extends State<SignupFragment> {
                           const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 10.0),
                       child: Text(
                         "Indirizzo",
-                        style: Fonts.bold(color: Palette.scheme.secondary),
+                        style: Fonts.bold(color: Palette.scheme.onPrimaryContainer),
                       ),
                     ),
                   )
@@ -459,7 +459,7 @@ class _SignupFragmentState extends State<SignupFragment> {
                 padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 10.0),
                 child: Text(
                   "Cellullare",
-                  style: Fonts.bold(color: Palette.scheme.secondary),
+                  style: Fonts.bold(color: Palette.scheme.onPrimaryContainer),
                 ),
               ),
             ),

@@ -41,12 +41,11 @@ class APIManager {
               // .add(const Duration(hours: 1));
           String text = message['payload']['text'];
           if (text.contains('Ottimo!') &&
-              DateTime.now().difference(date).inSeconds < 30) {
-            print(DateTime.now().difference(date).inSeconds);
+              DateTime.now().difference(date).inSeconds < 15) {
             confirmed=true;
           }
           if (text.contains('Riepilogo:') &&
-              DateTime.now().difference(date).inSeconds < 40 && confirmed) {
+              DateTime.now().difference(date).inSeconds < 30 && confirmed) {
             post = Post();
             var summary = text
                 .replaceAll('`', '')
@@ -69,7 +68,7 @@ class APIManager {
             post.address = dict['Indirizzo']! == 'casa'
                 ? AccountManager().user.address
                 : dict['Indirizzo']!;
-            post.postType = dict['Servizio']!.contains('Assistenza')
+            post.postType = dict['Servizio']!.contains('Accompagnamento')
                 ? PostType.HOME
                 : PostType.TRANSPORT;
             post.description = dict['Specifica']??'';
