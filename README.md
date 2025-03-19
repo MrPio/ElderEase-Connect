@@ -2,6 +2,10 @@
 
 ElderlyEase is an easy-to-use app that has been designed to connect the elderly with carers workers.
 
+## Slideshow
+
+[presentazione ElderEase.pdf](https://github.com/user-attachments/files/19349382/presentazione.ElderEase.pdf)
+
 ## Demo
 
 https://github.com/MrPio/ElderCare/assets/22773005/71ec9050-ad17-4c5e-a2c5-c3d043be10b6
