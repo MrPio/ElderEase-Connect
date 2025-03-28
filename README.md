@@ -1,6 +1,8 @@
 # ElderEase Connect
 
-ElderlyEase is an easy-to-use app that has been designed to connect the elderly with carers workers.
+ElderlyEase is an easy-to-use app designed to connect the elderly with care workers.
+
+### 🏆 Award for the validity of the technical solutions adopted!
 
 ## Slideshow
 
